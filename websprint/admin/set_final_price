@@ -1,0 +1,28 @@
+<?php
+require_once '../config.php';
+session_start();
+if(empty($_SESSION['admin_logged_in'])) exit;
+
+$id = (int)$_GET['id'];
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
+  $final = (int)$_POST['final_amount'];
+
+  $pdo->prepare("
+    UPDATE orders SET
+      final_amount = :f,
+      status = 'final_pending',
+      final_payment_link = :l
+    WHERE id = :i
+  ")->execute([
+    ':f'=>$final,
+    ':l'=>BASE_URL."/pay_final.php?order_id=".$id,
+    ':i'=>$id
+  ]);
+}
+?>
+<h3>Set Final Price</h3>
+<form method="post">
+<input type="number" name="final_amount" required>
+<button>Generate Final Payment Link</button>
+</form>
