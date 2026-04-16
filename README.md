@@ -63,20 +63,6 @@ websprint/
 ├── script.js           # JavaScript (if any)
 ├── assets/             # Images, icons
 └── README.md           # Documentation
-⚙️ Setup & Usage
-Bash
-Copy code
-# Clone the repository
-git clone https://github.com/your-username/websprint.git
-
-# Open project folder
-cd websprint
-
-# Open in VS Code
-code .
-
-# Run using Live Server
-Right-click index.html → Open with Live Server
 
 🎯 Target Users
 Local shop owners
